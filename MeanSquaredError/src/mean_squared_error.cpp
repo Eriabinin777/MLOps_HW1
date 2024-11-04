@@ -4,7 +4,7 @@
 #include <vector>
 
 double MeanSquaredError::MSE(const std::vector<double> &a,
-                                 const std::vector<double> &b) {
+                             const std::vector<double> &b) {
   if (a.size() != b.size()) {
     throw std::runtime_error("Vectors must be of the same size");
   }
