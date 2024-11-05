@@ -9,6 +9,7 @@ RUN pip install setuptools
 RUN pip install pybind11
 RUN pip install build
 RUN pip install numpy
+RUN pip install scikit-learn
 
 RUN git clone https://github.com/Eriabinin777/MLOps_HW1.git
 WORKDIR /MLOps_HW1
