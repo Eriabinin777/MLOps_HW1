@@ -3,7 +3,7 @@ CXXFLAGS=-std=c++11 -O3 -march=native -Wall -I$(SRC_DIR) $(shell python3 -m pybi
 PY_LDFLAGS=$(shell python3-config --ldflags) -shared -fPIC
 GTEST_FLAGS=-lgtest -lgtest_main -pthread
 LDFLAGS=-lopenblas
-SRC_DIR=MeanSquaredErrorr/src
+SRC_DIR=MeanSquaredError/src
 TESTS_DIR=MeanSquaredError/tests
 PYTHON_DIR=MeanSquaredError/python
 
