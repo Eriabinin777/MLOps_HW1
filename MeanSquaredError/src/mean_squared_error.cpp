@@ -11,7 +11,7 @@ double MeanSquaredError::MSE(const std::vector<double> &a,
 
   double sum = 0;
   for (size_t i = 0; i < a.size(); ++i) {
-    sum += (a[i] - b[i])**2;
+    sum += (a[i] - b[i]) * (a[i] - b[i]);
   }
   return sum / a.size();
 }
