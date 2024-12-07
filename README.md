@@ -1,39 +1,41 @@
 # MLOps_HW2
-Биндинг для подсчета среднеквадратичного отклонения двух векторов
+Bмплементация цикла обучения на pytorch lightning, использование hydra как точку входа, подключение DVC для хранения файлов
 
-## Последовательность запусков
+## Последовательность действий
 ### Шаг 1
 
-Создаем в командной строке docker image
-
-```bash
-docker build --no-cache -t my_mse .
-```
+Пишем необходимы код для лайтнинга  PyTorchLightning, используя MNIST
 
 ### Шаг 2
 
-Запускаем контейнер
-
-```bash
-docker run --rm -it my_mse
-```
+Для удобства задания параметров обучения мы воспользуемся hydra. Для этого создим дирикторию conf с нужными конфигами, а также добавить декоратор hydra в файл train.py
 
 ### Шаг 3
 
-Устанавливаем пакет
+Начинаем работу с DVC. Мы должны начать инициализацию, после добавить трекинг данных и настроить хранилище
 
 ```bash
-make MeanSquaredError
-python3 -m build
-pip3 install dist/*.whl
+dvc init
+git add .dvc .gitignore
+
+dvc add data/MNIST/raw
+git add data/MNIST/raw.dvc
+
+dvc remote add -d myremote <remote_url>
+dvc push
 ```
 
 ### Шаг 4
 
-Сравниваем реализацию с библиотечной функцией
+Пушим логи обучения
 
 ```bash
-python3 perf.py
+dvc add logs
+git add logs.dvc
+git commit -m "Add training logs"
+dvc push
 ```
+
+
 
 
